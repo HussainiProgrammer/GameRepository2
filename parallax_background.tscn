@@ -1,0 +1,115 @@
+[gd_scene load_steps=11 format=3 uid="uid://dn6lfpcrcxcj1"]
+
+[ext_resource type="Texture2D" uid="uid://dsis76ac2dht8" path="res://Parallax Forest Background (Seamless)/Parallax Forest Background - Blue/10_Sky.png" id="1_ol5fc"]
+[ext_resource type="Texture2D" uid="uid://b0fv1w35g0msp" path="res://Parallax Forest Background (Seamless)/Parallax Forest Background - Blue/09_Forest.png" id="2_ikrpy"]
+[ext_resource type="Texture2D" uid="uid://ckbqduc2fwo3p" path="res://Parallax Forest Background (Seamless)/Parallax Forest Background - Blue/08_Forest.png" id="3_35euw"]
+[ext_resource type="Texture2D" uid="uid://dc0c3r02b6gtg" path="res://Parallax Forest Background (Seamless)/Parallax Forest Background - Blue/07_Forest.png" id="4_1awya"]
+[ext_resource type="Texture2D" uid="uid://dx5ohk7f2f4v7" path="res://Parallax Forest Background (Seamless)/Parallax Forest Background - Blue/06_Forest.png" id="5_ueofd"]
+[ext_resource type="Texture2D" uid="uid://di1tgspkf3jk1" path="res://Parallax Forest Background (Seamless)/Parallax Forest Background - Blue/04_Forest.png" id="6_5dg26"]
+[ext_resource type="Texture2D" uid="uid://c2spei6qi2vru" path="res://Parallax Forest Background (Seamless)/Parallax Forest Background - Blue/02_Bushes.png" id="7_p0mos"]
+[ext_resource type="Texture2D" uid="uid://nqmwavdc0ths" path="res://Parallax Forest Background (Seamless)/Parallax Forest Background - Blue/01_Mist.png" id="8_otbut"]
+[ext_resource type="Texture2D" uid="uid://b3pxhbhr64sdj" path="res://Parallax Forest Background (Seamless)/Parallax Forest Background - Blue/03_Particles.png" id="9_yqp21"]
+[ext_resource type="Texture2D" uid="uid://cjbmy8heldc0e" path="res://Parallax Forest Background (Seamless)/Parallax Forest Background - Blue/05_Particles.png" id="10_pytfm"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="Sky" type="ParallaxLayer" parent="."]
+modulate = Color(0.633757, 0.633757, 0.633757, 1)
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+texture = ExtResource("1_ol5fc")
+centered = false
+
+[node name="FarBushes" type="ParallaxLayer" parent="."]
+modulate = Color(0.633757, 0.633757, 0.633757, 1)
+texture_filter = 1
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1915, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="FarBushes"]
+texture = ExtResource("2_ikrpy")
+centered = false
+
+[node name="FarTress" type="ParallaxLayer" parent="."]
+modulate = Color(0.633757, 0.633757, 0.633757, 1)
+texture_filter = 1
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1915, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="FarTress"]
+texture = ExtResource("3_35euw")
+centered = false
+
+[node name="MidTrees" type="ParallaxLayer" parent="."]
+modulate = Color(0.633757, 0.633757, 0.633757, 1)
+texture_filter = 1
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(1915, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="MidTrees"]
+texture = ExtResource("4_1awya")
+centered = false
+
+[node name="MidTrees2" type="ParallaxLayer" parent="."]
+modulate = Color(0.633757, 0.633757, 0.633757, 1)
+texture_filter = 1
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(1915, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="MidTrees2"]
+texture = ExtResource("5_ueofd")
+centered = false
+
+[node name="NearTrees" type="ParallaxLayer" parent="."]
+modulate = Color(0.633757, 0.633757, 0.633757, 1)
+texture_filter = 1
+motion_scale = Vector2(0.9, 0.9)
+motion_mirroring = Vector2(1915, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="NearTrees"]
+scale = Vector2(1, 1.05)
+texture = ExtResource("6_5dg26")
+centered = false
+
+[node name="NearBushes" type="ParallaxLayer" parent="."]
+modulate = Color(0.633757, 0.633757, 0.633757, 1)
+texture_filter = 1
+motion_mirroring = Vector2(1915, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="NearBushes"]
+scale = Vector2(1.01, 1.01)
+texture = ExtResource("7_p0mos")
+centered = false
+
+[node name="Mist" type="ParallaxLayer" parent="."]
+modulate = Color(0.635294, 0.635294, 0.635294, 0.0745098)
+texture_filter = 1
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1915, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Mist"]
+scale = Vector2(0.997396, 1.01)
+texture = ExtResource("8_otbut")
+centered = false
+
+[node name="Particles" type="ParallaxLayer" parent="."]
+modulate = Color(0.633757, 0.633757, 0.633757, 1)
+texture_filter = 1
+motion_scale = Vector2(0.9, 0.9)
+motion_mirroring = Vector2(1915, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Particles"]
+texture = ExtResource("9_yqp21")
+centered = false
+
+[node name="Particles2" type="ParallaxLayer" parent="."]
+modulate = Color(0.633757, 0.633757, 0.633757, 1)
+texture_filter = 1
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(1915, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Particles2"]
+texture = ExtResource("10_pytfm")
+centered = false

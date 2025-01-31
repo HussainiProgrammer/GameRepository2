@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://dxacbshnb8gwr"]
+
+[sub_resource type="Gradient" id="Gradient_dhn1d"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.721332, 0.676376, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rtkpa"]
+gradient = SubResource("Gradient_dhn1d")
+height = 4
+
+[sub_resource type="Gradient" id="Gradient_0y6p5"]
+colors = PackedColorArray(1, 0, 0, 1, 0.746585, 2.00946e-06, 8.66354e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wps5m"]
+gradient = SubResource("Gradient_0y6p5")
+height = 4
+
+[sub_resource type="Gradient" id="Gradient_ev8pm"]
+colors = PackedColorArray(1, 1, 1, 1, 0.991606, 1, 0.496144, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ppi5t"]
+gradient = SubResource("Gradient_ev8pm")
+height = 4
+
+[sub_resource type="Gradient" id="Gradient_inupp"]
+colors = PackedColorArray(1, 1, 0, 1, 0.840435, 0.840435, 1.92523e-06, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f8hs2"]
+gradient = SubResource("Gradient_inupp")
+height = 4
+
+[sub_resource type="Gradient" id="Gradient_lb6wn"]
+colors = PackedColorArray(1, 1, 1, 1, 0.58261, 1, 0.551537, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_enhc2"]
+gradient = SubResource("Gradient_lb6wn")
+height = 4
+
+[sub_resource type="Gradient" id="Gradient_rie6h"]
+colors = PackedColorArray(0, 1, 0, 1, 0, 0.638955, 1.34766e-06, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_esink"]
+gradient = SubResource("Gradient_rie6h")
+height = 4
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -8.0
+offset_right = 32.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1000.0
+value = 1000.0
+texture_under = SubResource("GradientTexture2D_rtkpa")
+texture_progress = SubResource("GradientTexture2D_wps5m")
+
+[node name="PlayerHungerBar" type="TextureProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -13.0
+offset_right = 32.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 10000.0
+value = 10000.0
+texture_under = SubResource("GradientTexture2D_ppi5t")
+texture_progress = SubResource("GradientTexture2D_f8hs2")
+
+[node name="PlayerStaminaBar" type="TextureProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -18.0
+offset_right = 32.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1000.0
+value = 1000.0
+texture_under = SubResource("GradientTexture2D_enhc2")
+texture_progress = SubResource("GradientTexture2D_esink")

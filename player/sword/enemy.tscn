@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://cosx1dvs3icef"]
+
+[ext_resource type="Script" path="res://scripts/damageable_area.gd" id="1_41gl3"]
+[ext_resource type="Texture2D" uid="uid://nktpcm3ltq5a" path="res://icon.svg" id="2_ixeg0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eej7f"]
+size = Vector2(71, 64)
+
+[sub_resource type="Gradient" id="Gradient_j1c3s"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.585611, 0.524716, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0oe67"]
+gradient = SubResource("Gradient_j1c3s")
+width = 48
+height = 6
+
+[sub_resource type="Gradient" id="Gradient_0a5ep"]
+colors = PackedColorArray(1, 0, 0, 1, 0.780694, 4.54836e-06, 4.81307e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jh85w"]
+gradient = SubResource("Gradient_0a5ep")
+width = 48
+height = 6
+
+[node name="enemy" type="CharacterBody2D"]
+position = Vector2(280, 464)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+light_mask = 3
+position = Vector2(3, -29)
+shape = SubResource("RectangleShape2D_eej7f")
+
+[node name="EnemyHitBoxArea" type="Area2D" parent="."]
+collision_layer = 5
+script = ExtResource("1_41gl3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBoxArea"]
+light_mask = 3
+position = Vector2(3, -29)
+shape = SubResource("RectangleShape2D_eej7f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.00001, -30)
+scale = Vector2(0.578125, 0.585938)
+texture = ExtResource("2_ixeg0")
+
+[node name="healthBar" type="TextureProgressBar" parent="."]
+offset_left = -23.0
+offset_top = -75.0
+offset_right = 25.0
+offset_bottom = -69.0
+value = 100.0
+texture_under = SubResource("GradientTexture2D_0oe67")
+texture_progress = SubResource("GradientTexture2D_jh85w")

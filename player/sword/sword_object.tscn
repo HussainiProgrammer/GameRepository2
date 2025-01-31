@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=3 uid="uid://rw1qupl3yb8o"]
+
+[ext_resource type="Texture2D" uid="uid://b42q45drx508r" path="res://player/res/Sword.png" id="1_fpeu2"]
+[ext_resource type="PackedScene" uid="uid://rafmkjysseyp" path="res://player/sword/hit_area.tscn" id="2_by4r1"]
+[ext_resource type="Script" path="res://player/sword/state_machine_sword.gd" id="3_qitc6"]
+[ext_resource type="Script" path="res://player/sword/Sword States/swordInvisbleState.gd" id="4_ar3l2"]
+[ext_resource type="Script" path="res://player/sword/Sword States/swordIdleState.gd" id="5_4m1nq"]
+[ext_resource type="Script" path="res://player/sword/Sword States/swordAttack1State.gd" id="6_w4r7s"]
+[ext_resource type="Script" path="res://player/sword/Sword States/swordAttack2State.gd" id="7_dxuda"]
+[ext_resource type="Script" path="res://player/sword/Sword States/swordAttack3State.gd" id="8_ofas1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ry833"]
+size = Vector2(232, 171)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8uwm"]
+size = Vector2(63.0001, 207)
+
+[node name="SwordObject" type="Node2D"]
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+position = Vector2(0, 24.5)
+shape = SubResource("RectangleShape2D_ry833")
+debug_color = Color(2.11775e-06, 0.63244, 0.45147, 0.42)
+
+[node name="Sword" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Sword"]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("1_fpeu2")
+
+[node name="HitArea" parent="Sword" instance=ExtResource("2_by4r1")]
+position = Vector2(0, 0)
+collision_mask = 5
+monitoring = false
+damage = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword/HitArea"]
+position = Vector2(4.5, -22.5)
+shape = SubResource("RectangleShape2D_d8uwm")
+debug_color = Color(0.861637, 0.360448, 0, 0.42)
+
+[node name="FloatingTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="ComboTimer" type="Timer" parent="."]
+wait_time = 0.64
+one_shot = true
+
+[node name="Sword State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_qitc6")
+initial_state = NodePath("SwordInvisible")
+
+[node name="SwordInvisible" type="Node" parent="Sword State Machine"]
+script = ExtResource("4_ar3l2")
+
+[node name="SwordIdle" type="Node" parent="Sword State Machine"]
+script = ExtResource("5_4m1nq")
+
+[node name="SwordAttack1" type="Node" parent="Sword State Machine"]
+script = ExtResource("6_w4r7s")
+
+[node name="SwordAttack2" type="Node" parent="Sword State Machine"]
+script = ExtResource("7_dxuda")
+
+[node name="SwordAttack3" type="Node" parent="Sword State Machine"]
+script = ExtResource("8_ofas1")
+
+[node name="FloatingTimer" type="Timer" parent="Sword State Machine"]
+wait_time = 10.0
+one_shot = true
+
+[node name="Combo1Timer" type="Timer" parent="Sword State Machine"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Combo2Timer" type="Timer" parent="Sword State Machine"]
+wait_time = 0.08
+one_shot = true
+
+[node name="NextComboTimer" type="Timer" parent="Sword State Machine"]
+wait_time = 1.2
+one_shot = true
+
+[connection signal="area_entered" from="EnemyDetector" to="." method="_on_enemy_detector_area_entered"]
+[connection signal="area_entered" from="EnemyDetector" to="Sword State Machine" method="_on_enemy_detector_area_entered"]
+[connection signal="area_exited" from="EnemyDetector" to="." method="_on_enemy_detector_area_exited"]
+[connection signal="area_exited" from="EnemyDetector" to="Sword State Machine" method="_on_enemy_detector_area_exited"]

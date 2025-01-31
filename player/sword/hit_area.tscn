@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://rafmkjysseyp"]
+
+[ext_resource type="Script" path="res://player/sword/hit_area.gd" id="1_1f35x"]
+
+[node name="Area2D" type="Area2D"]
+position = Vector2(-50, 1.667)
+scale = Vector2(0.333333, 0.333333)
+script = ExtResource("1_1f35x")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

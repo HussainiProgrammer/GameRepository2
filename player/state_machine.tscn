@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://l6b6ik61i3ng"]
+
+[ext_resource type="Script" path="res://player/state_machine.gd" id="1_kp5js"]
+[ext_resource type="Script" path="res://player/States/run_state.gd" id="2_0hu18"]
+[ext_resource type="Script" path="res://player/States/player_idle.gd" id="3_rsun1"]
+[ext_resource type="Script" path="res://player/States/jump_state.gd" id="4_lrndc"]
+[ext_resource type="Script" path="res://player/States/death_state.gd" id="8_x8r3l"]
+
+[node name="State Machine" type="Node" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_kp5js")
+initial_state = NodePath("PlayerIdle")
+
+[node name="PlayerRunAndSprint" type="Node" parent="."]
+script = ExtResource("2_0hu18")
+
+[node name="PlayerIdle" type="Node" parent="."]
+script = ExtResource("3_rsun1")
+
+[node name="PlayerJump" type="Node" parent="."]
+script = ExtResource("4_lrndc")
+
+[node name="NextComboTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="PlayerDeath" type="Node" parent="."]
+script = ExtResource("8_x8r3l")
+
+[node name="ReloadTimer" type="Timer" parent="PlayerDeath"]
+one_shot = true
+
+[connection signal="timeout" from="PlayerDeath/ReloadTimer" to="PlayerDeath" method="_on_reload_timer_timeout"]
